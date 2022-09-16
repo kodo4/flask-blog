@@ -1,0 +1,7 @@
+{% extends 'layout.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+    <h1>Ошибка 401</h1>
+    <p>Вы не авторизированы. Просьба авторизироваться на сайте</p>
+    <a href="{{ url_for ('users.login') }}">Авторизоваться</a>
+{% endblock %}
