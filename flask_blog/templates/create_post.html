@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+{% block content %}
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <h3 class="content-header">Новый пост</h3>
+    <div class="form-cotrol">
+        {{ form.title.label }}
+        {% if form.title.errors %}
+            {{ form.title }}
+            {% for error in form.title.errors %}
+                <p><b>{{ error }}</b></p>
+            {% endfor %}
+        {% else %}
+            {{ form.title }}
+        {% endif %}
+    </div>
+    <div class="form-cotrol">
+        {{ form.content.label }}
+        {% if form.content.errors %}
+            {{ form.content }}
+            {% for error in form.content.errors %}
+                <p><b>{{ error }}</b></p>
+            {% endfor %}
+        {% else %}
+            {{ form.content }}
+        {% endif %}
+    </div>
+
+    <div class="form-cotrol">
+        {{ form.submit }}
+    </div>
+</form>
+{% endblock %}
+</body>
+</html>

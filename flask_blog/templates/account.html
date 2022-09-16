@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block title %}{{ title }}{% endblock title %}
+{% block content %}
+<form method="post" action="">
+    {{ form.hidden_tag() }}
+    <h3 class="content-header">Редактирование профиля</h3>
+    <div class="form-control">
+        {{ form.username.label }}
+        {% if form.username.errors %}
+            {{ form.username }}
+            {% for error in form.username.errors %}
+                <p><b>{{ error }}</b></p>
+            {% endfor %}
+        {% else %}
+            {{ form.username }}
+        {% endif %}
+    </div>
+    <div class="form-control">
+        {{ form.email.label }}
+        {% if form.email.errors %}
+            {{ form.email }}
+            {% for err in form.email.errors %}
+                <p><b>{{ err }}</b></p>
+            {% endfor %}
+        {% else %}
+            {{ form.email }}
+        {% endif %}
+    </div>
+    <div class="form-control">
+        <img class='img__avatar' src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}" alt="pics">
+        {{ form.picture.label }}
+        {{ form.picture }}
+        {% if form.picture.errors %}
+          {% for error in form.picture.errors %}
+              <span class="text-danger">{{ error }}</span></br>
+          {% endfor %}
+      {% endif %}
+    </div>
+    <div class="form-control">
+        {{ form.submit }}
+    </div>
+
+</form>
+{% endblock content %}

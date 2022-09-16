@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock %}
+<body>
+{%  block content %}
+    <h1>Все посты</h1>
+    {% for post in posts.items %}
+        <div class="border-div">
+            <img src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}" alt="">
+            <h4 class="min-header"><a href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h4>
+            <p>{{ post.content }}</p>
+        </div>
+    {% endfor %}
+{% endblock content %}
+</body>

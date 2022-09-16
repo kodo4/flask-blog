@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% block title %}{{ title }}{% endblock title %}
+{% block content %}
+<form method="post" action="">
+    {{ form.hidden_tag() }}
+    <h3 class="content-header">Вход</h3>
+    <div class="form-control">
+        {{ form.email.label }}
+        {% if form.email.errors %}
+            {{ form.email}}
+            {% for error in form.email.erorrs %}
+                <p><b>{{ error }}</b></p>
+            {% endfor %}
+        {% else %}
+            {{ form.email }}
+        {% endif %}
+    </div>
+    <div class="form-control">
+        {{ form.password.label }}
+        {% if form.password.errors %}
+            {{ form.password }}
+            {% for error in form.password.erorrs %}
+                <p><b>{{ error }}</b></p>
+            {% endfor %}
+        {% else %}
+            {{ form.password }}
+        {% endif %}
+    </div>
+    <div class="form-control">
+        {{ form.submit }}
+        <a href="{{ url_for('users.reset_request') }}">Забыли пароль?</a>
+    </div>
+
+
+</form>
+{% endblock content %}
